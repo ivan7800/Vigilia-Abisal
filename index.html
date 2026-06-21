@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#100b08">
+  <meta name="description" content="Juego de rol narrativo en solitario de horror cósmico con 20 expedientes. Offline, sin dependencias y listo para GitHub Pages.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>Vigilia Abisal · Edición Completa Lovecraftiana</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#app">Saltar al juego</a>
+  <div class="cosmic-bg" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="brand">
+      <img src="assets/icon.svg" alt="" width="44" height="44">
+      <div>
+        <p class="eyebrow">RPG narrativo offline · edición completa</p>
+        <h1>Vigilia Abisal</h1>
+      </div>
+    </div>
+    <nav class="top-actions" aria-label="Acciones rápidas">
+      <button id="soundToggle" class="ghost" type="button" aria-pressed="false">Ambiente</button>
+      <button id="exportBtn" class="ghost" type="button">Exportar</button>
+      <label id="importLabel" class="ghost import-label" for="importFile" role="button" tabindex="0" aria-label="Importar partida en JSON">Importar</label>
+      <input id="importFile" type="file" accept="application/json" hidden>
+      <button id="resetBtn" class="danger" type="button">Reiniciar</button>
+    </nav>
+  </header>
+
+  <main id="app" class="app-shell">
+    <section class="panel hero-panel" id="welcomePanel">
+      <p class="eyebrow">Años 20 · archivos prohibidos · cordura limitada</p>
+      <h2>Rol cósmico en solitario para navegador</h2>
+      <p>Elige investigador, abre 20 expedientes, tira dados y sobrevive a una campaña de horror cósmico sin backend, sin dependencias externas y preparada para GitHub Pages.</p>
+      <div class="hero-grid">
+        <div><strong>20 expedientes</strong><span>homenaje a los relatos clave</span></div>
+        <div><strong>6 atributos</strong><span>Razón, Temple, Ocultismo...</span></div>
+        <div><strong>Guardado local</strong><span>continúa cuando quieras</span></div>
+        <div><strong>100 escenas</strong><span>decisiones, objetos y finales</span></div>
+      </div>
+      <div class="notice"><strong>Nota legal:</strong> esta app usa textos originales escritos para el juego. No incluye traducciones, fragmentos extensos ni ilustraciones protegidas de los libros subidos.</div>
+    </section>
+
+    <section class="panel creator-panel" id="creatorPanel" aria-labelledby="creatorTitle">
+      <div class="section-heading">
+        <p class="eyebrow">Paso 1</p>
+        <h2 id="creatorTitle">Crea tu investigador</h2>
+      </div>
+      <form id="characterForm" class="character-form">
+        <label>Nombre del investigador
+          <input id="investigatorName" maxlength="32" placeholder="Ej. Adrià Carter" autocomplete="off" spellcheck="false">
+        </label>
+        <div>
+          <p class="form-label">Profesión</p>
+          <div id="archetypes" class="card-grid"></div>
+        </div>
+        <button class="primary" type="submit">Iniciar campaña</button>
+      </form>
+    </section>
+
+    <section class="game-layout hidden" id="gamePanel" aria-live="polite">
+      <aside class="panel sheet">
+        <div class="section-heading">
+          <p class="eyebrow">Hoja</p>
+          <h2 id="sheetName">Investigador</h2>
+        </div>
+        <p id="sheetRole" class="muted"></p>
+        <div class="meters">
+          <div><span>Salud</span><meter id="healthMeter" min="0" max="24" value="0"></meter><b id="healthText"></b></div>
+          <div><span>Cordura</span><meter id="sanityMeter" min="0" max="40" value="0"></meter><b id="sanityText"></b></div>
+          <div><span>Presagio</span><meter id="dreadMeter" min="0" max="16" value="0"></meter><b id="dreadText"></b></div>
+        </div>
+        <dl id="statsList" class="stats-list"></dl>
+        <div class="mini-block"><h3>Inventario</h3><ul id="inventoryList"></ul></div>
+        <div class="mini-block"><h3>Registro</h3><p><strong id="clueText">0</strong> pistas · <strong id="caseText">0</strong> expedientes cerrados</p></div>
+      </aside>
+
+      <section class="panel case-select" id="casePanel">
+        <div class="section-heading">
+          <p class="eyebrow">Paso 2</p>
+          <h2>Elige expediente</h2>
+        </div>
+        <div id="caseList" class="case-list"></div>
+      </section>
+
+      <section class="panel story-panel hidden" id="storyPanel">
+        <div class="story-topline">
+          <button id="backToCases" class="ghost" type="button">← Expedientes</button>
+          <span id="caseBadge" class="case-badge"></span>
+        </div>
+        <div class="story-card">
+          <div id="sceneArt" class="scene-art" aria-hidden="true">☾</div>
+          <p id="sceneLocation" class="eyebrow"></p>
+          <h2 id="sceneTitle"></h2>
+          <p id="sceneText" class="scene-text"></p>
+          <div id="choiceList" class="choice-list"></div>
+        </div>
+        <div id="rollBox" class="roll-box" aria-live="polite"></div>
+      </section>
+
+      <section class="panel journal-panel">
+        <div class="section-heading">
+          <p class="eyebrow">Archivo</p>
+          <h2>Diario del investigador</h2>
+        </div>
+        <ol id="journalList" class="journal-list"></ol>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="modal" class="modal">
+    <div class="modal-card">
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+      <button id="modalClose" class="primary" type="button">Continuar</button>
+    </div>
+  </dialog>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "Vigilia Abisal · Edición Completa",
+  "short_name": "Vigilia Abisal",
+  "description": "RPG narrativo en solitario de horror cósmico con 20 expedientes originales de homenaje.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#100b08",
+  "theme_color": "#100b08",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
