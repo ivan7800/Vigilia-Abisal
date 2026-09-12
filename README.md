@@ -1,94 +1,116 @@
-# Vigilia Abisal · Edición Completa Lovecraftiana
+# Vigilia Abisal · Campaña Ω v3.0.0
 
-Juego de rol narrativo en solitario para navegador, offline-first y preparado para GitHub Pages.
+RPG narrativo de horror cósmico en solitario, **offline-first**, sin backend ni dependencias externas y preparado para GitHub Pages.
 
-## Qué es
+## Qué cambia en v3
 
-**Vigilia Abisal** es una campaña de horror cósmico en solitario. El jugador crea un investigador, abre expedientes, toma decisiones, tira dados virtuales y gestiona salud, cordura, presagio, pistas, inventario y diario.
+La v3 deja atrás la estructura lineal de la edición anterior y convierte los expedientes en una campaña conectada:
 
-Esta edición amplía el proyecto a **20 expedientes jugables** como homenaje original a los relatos clave del universo lovecraftiano. Todo el texto jugable está escrito específicamente para esta app: no incluye traducciones, capítulos copiados ni fragmentos extensos de obras editadas.
+- **20 expedientes principales + Archivo Ω** como final de metacampaña.
+- **128 escenas** y **289 decisiones**.
+- Expedientes IX–XX ampliados de 5 a 7 escenas, con rutas secundarias y revelaciones propias.
+- Los textos de resolución repetidos de IX–XX se han sustituido por respuestas específicas de cada caso.
+- **Objetos útiles**: las reliquias obtenidas pueden desbloquear una tercera forma de resolver cada expediente.
+- **Continuidad entre expedientes**: flags y objetos de casos anteriores desbloquean decisiones especiales en casos posteriores.
+- **Dificultad real**: la dificultad del expediente aplica Presión a la DC efectiva de las tiradas.
+- **Progresión**: XP, nivel, Insight, cicatrices y bonificaciones de veteranía.
+- **5 convergencias de campaña** que conectan mar, linaje, sueño, archivo no humano y culto.
+- **Archivo Ω** se desbloquea tras 12 expedientes y 4 convergencias; el final verdadero exige completar los 20, las 5 convergencias y suficiente Insight.
+- Epílogos específicos para los desenlaces principales de cada expediente.
+- Capa visual temática por tipo de horror y panel de progreso de campaña.
+- PWA mejorada con iconos PNG 192/512, `apple-touch-icon`, actualización de caché y shell offline.
 
-## Expedientes incluidos
+## Mecánica
 
-1. La voz bajo la losa
-2. El suero del sexto cadáver
-3. La arcilla que soñaba con el mar
-4. El color que cayó fuera del espectro
-5. La colina que tenía respiración
-6. La ciudad que respiraba por branquias
-7. Las montañas sin alba
-8. Kadath no aparece en los mapas
-9. La grieta de Dagón
-10. La tumba que heredaba nombres
-11. El teatro de Nyarlathotep
-12. La ciudad sin nombre
-13. La partitura de Erich Zann
-14. El negativo de Pickman
-15. La casa que evitaban los vivos
-16. El ceremonial de Kingsport
-17. El archivo de Charles Dexter Ward
-18. Los susurros de la colina negra
-19. La geometría de la casa de la bruja
-20. La sombra de otro tiempo
+Cada tirada usa:
 
-## Funciones
+```text
+d12 + d6 + atributo + veteranía + bonificaciones - Presagio
+```
 
-- 20 expedientes jugables.
-- 100 escenas narrativas.
-- 8 arquetipos de investigador.
-- Sistema de tiradas d12 + d6 + atributo.
-- Salud, cordura, presagio, pistas e inventario.
-- Objetos únicos por expediente.
-- Diario automático ampliado.
-- Exportar e importar partida en JSON.
-- Validación y saneado de partidas importadas.
-- Guardado automático en `localStorage`.
-- Ambiente sonoro generado con Web Audio.
-- Diseño responsive móvil.
-- PWA offline con manifest y service worker.
-- Sin backend y sin dependencias externas.
+La DC efectiva añade la **Presión del expediente** según su dificultad.
+
+El nivel de veteranía se obtiene con XP al cerrar casos por primera vez. Las repeticiones no permiten farmear XP; mejorar un desenlace puede conceder Insight adicional.
+
+## Convergencias
+
+La campaña detecta relaciones entre expedientes y desbloquea cinco sellos:
+
+1. La marea que recuerda.
+2. La sangre que insiste.
+3. Cartografía del sueño.
+4. Archivo no humano.
+5. Los nombres bajo la ciudad.
+
+Estas convergencias no son solo decorativas: determinan el acceso y las opciones del Archivo Ω.
+
+## Privacidad
+
+- Sin login.
+- Sin analíticas ni telemetría.
+- Sin API remota.
+- Sin CDN.
+- Sin backend.
+- Partidas guardadas en `localStorage`.
+- Exportación/importación JSON saneada.
+- CSP restrictiva.
+
+## Guardados
+
+La v3 usa el esquema de guardado **v4** y la clave `vigiliaAbisal.save.v2`.
+
+Se migran automáticamente partidas antiguas desde:
+
+- `vigiliaAbisal.save.v1`
+- `investigador404.save.v1`
+
+Los casos cerrados de versiones anteriores reciben XP e Insight retroactivos al migrar.
 
 ## Uso local
 
-Opción rápida:
-
-```text
-Abre index.html en el navegador.
-```
-
-Opción recomendada para probar PWA/service worker:
+La app puede abrirse directamente con `index.html` para jugar. Para probar PWA y Service Worker usa un servidor HTTP local:
 
 ```bash
 python -m http.server 8080
 ```
 
-Luego abre:
+Después abre:
 
 ```text
 http://localhost:8080
 ```
 
-## Publicar en GitHub Pages
+## GitHub Pages
 
-1. Crea un repositorio nuevo.
-2. Sube todos los archivos de esta carpeta.
-3. Entra en `Settings > Pages`.
-4. Selecciona `Deploy from a branch`.
-5. Elige `main` y `/root`.
-6. Guarda y espera el despliegue.
+1. Crea o usa un repositorio.
+2. Sube **el contenido de esta carpeta a la raíz**.
+3. En `Settings > Pages`, selecciona `Deploy from a branch`.
+4. Elige `main` y `/root`.
+5. Publica.
 
-## Seguridad y privacidad
+Todas las rutas de recursos son relativas y el Service Worker trabaja dentro del scope del repositorio.
 
-- No hay login.
-- No hay analíticas.
-- No se envían datos a servidores externos.
-- Las partidas quedan en el navegador del usuario.
-- La importación de partidas valida y sanea el JSON antes de cargarlo.
-- No usa `eval`, `document.write` ni dependencias de terceros.
+## Estructura
+
+```text
+index.html
+styles.css
+campaign.js      # contenido, epílogos, expansiones y metacampaña
+app.js           # motor, estado, UI, tiradas, guardado y progresión
+service-worker.js
+manifest.webmanifest
+assets/
+README.md
+CHANGELOG.md
+AUDIT_REPORT.md
+TEST_REPORT.md
+VERSION.txt
+LICENSE
+```
 
 ## Nota legal
 
-Este proyecto es un homenaje interactivo con textos originales. No redistribuye las traducciones de los tomos usados como referencia bibliográfica ni sus portadas/ilustraciones.
+Proyecto homenaje con textos originales escritos para el juego. No incluye traducciones extensas, páginas de libros ni ilustraciones protegidas de las obras de referencia.
 
 ## Licencia
 

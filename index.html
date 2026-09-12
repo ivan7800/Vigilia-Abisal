@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#100b08">
-  <meta name="description" content="Juego de rol narrativo en solitario de horror cósmico con 20 expedientes. Offline, sin dependencias y listo para GitHub Pages.">
+  <meta name="description" content="RPG narrativo de horror cósmico con 20 expedientes, ramificaciones, progresión y final de metacampaña Archivo Ω. Offline y listo para GitHub Pages.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
-  <title>Vigilia Abisal · Edición Completa Lovecraftiana</title>
+  <title>Vigilia Abisal · Campaña Ω</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -18,7 +19,7 @@
     <div class="brand">
       <img src="assets/icon.svg" alt="" width="44" height="44">
       <div>
-        <p class="eyebrow">RPG narrativo offline · edición completa</p>
+        <p class="eyebrow">RPG narrativo offline · Campaña Ω v3</p>
         <h1>Vigilia Abisal</h1>
       </div>
     </div>
@@ -35,12 +36,12 @@
     <section class="panel hero-panel" id="welcomePanel">
       <p class="eyebrow">Años 20 · archivos prohibidos · cordura limitada</p>
       <h2>Rol cósmico en solitario para navegador</h2>
-      <p>Elige investigador, abre 20 expedientes, tira dados y sobrevive a una campaña de horror cósmico sin backend, sin dependencias externas y preparada para GitHub Pages.</p>
+      <p>Elige investigador, abre 20 expedientes conectados, desbloquea convergencias, progresa como veterano y alcanza el Archivo Ω. Todo funciona sin backend ni dependencias externas y está preparado para GitHub Pages.</p>
       <div class="hero-grid">
         <div><strong>20 expedientes</strong><span>homenaje a los relatos clave</span></div>
         <div><strong>6 atributos</strong><span>Razón, Temple, Ocultismo...</span></div>
         <div><strong>Guardado local</strong><span>continúa cuando quieras</span></div>
-        <div><strong>100 escenas</strong><span>decisiones, objetos y finales</span></div>
+        <div><strong>128 escenas</strong><span>ramificaciones, objetos y finales propios</span></div>
       </div>
       <div class="notice"><strong>Nota legal:</strong> esta app usa textos originales escritos para el juego. No incluye traducciones, fragmentos extensos ni ilustraciones protegidas de los libros subidos.</div>
     </section>
@@ -70,13 +71,26 @@
         </div>
         <p id="sheetRole" class="muted"></p>
         <div class="meters">
-          <div><span>Salud</span><meter id="healthMeter" min="0" max="24" value="0"></meter><b id="healthText"></b></div>
-          <div><span>Cordura</span><meter id="sanityMeter" min="0" max="40" value="0"></meter><b id="sanityText"></b></div>
-          <div><span>Presagio</span><meter id="dreadMeter" min="0" max="16" value="0"></meter><b id="dreadText"></b></div>
+          <div><span>Salud</span><meter id="healthMeter" min="0" max="24" value="0" aria-label="Salud actual"></meter><b id="healthText"></b></div>
+          <div><span>Cordura</span><meter id="sanityMeter" min="0" max="40" value="0" aria-label="Cordura actual"></meter><b id="sanityText"></b></div>
+          <div><span>Presagio</span><meter id="dreadMeter" min="0" max="16" value="0" aria-label="Presagio actual"></meter><b id="dreadText"></b></div>
         </div>
         <dl id="statsList" class="stats-list"></dl>
         <div class="mini-block"><h3>Inventario</h3><ul id="inventoryList"></ul></div>
-        <div class="mini-block"><h3>Registro</h3><p><strong id="clueText">0</strong> pistas · <strong id="caseText">0</strong> expedientes cerrados</p></div>
+        <div class="mini-block progression-block">
+          <h3>Veteranía</h3>
+          <div class="progression-grid">
+            <strong id="levelText">Nivel 1</strong><span id="xpText">0 XP</span>
+            <strong id="insightText">0 Insight</strong><span id="scarText">0 cicatrices</span>
+          </div>
+          <p id="perkText" class="microcopy"></p>
+        </div>
+        <div class="mini-block">
+          <h3>Convergencias</h3>
+          <p id="campaignProgress" class="microcopy">0/20 expedientes · 0/5 convergencias</p>
+          <ul id="sigilList" class="sigil-list"></ul>
+        </div>
+        <div class="mini-block"><h3>Registro</h3><p><strong id="clueText">0</strong> pistas totales · <strong id="caseText">0</strong> expedientes cerrados</p></div>
       </aside>
 
       <section class="panel case-select" id="casePanel">
@@ -95,6 +109,7 @@
         <div class="story-card">
           <div id="sceneArt" class="scene-art" aria-hidden="true">☾</div>
           <p id="sceneLocation" class="eyebrow"></p>
+          <p id="sceneProgress" class="scene-progress"></p>
           <h2 id="sceneTitle"></h2>
           <p id="sceneText" class="scene-text"></p>
           <div id="choiceList" class="choice-list"></div>
@@ -120,6 +135,20 @@
     </div>
   </dialog>
 
+  <script src="campaign-core.js" defer></script>
+  <script src="campaign-epilogues.js" defer></script>
+  <script src="campaign-exp-1.js" defer></script>
+  <script src="campaign-exp-2.js" defer></script>
+  <script src="campaign-exp-3.js" defer></script>
+  <script src="campaign-exp-4.js" defer></script>
+  <script src="campaign-crosslinks.js" defer></script>
+  <script src="campaign-meta-1.js" defer></script>
+  <script src="campaign-meta-2.js" defer></script>
   <script src="app.js" defer></script>
+  <script src="v3-content.js" defer></script>
+  <script src="v3-engine-1.js" defer></script>
+  <script src="v3-engine-2.js" defer></script>
+  <script src="v3-engine-3.js" defer></script>
+  <script src="v3-engine-4.js" defer></script>
 </body>
 </html>

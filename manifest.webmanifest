@@ -1,17 +1,16 @@
 {
-  "name": "Vigilia Abisal · Edición Completa",
+  "name": "Vigilia Abisal · Campaña Ω",
   "short_name": "Vigilia Abisal",
-  "description": "RPG narrativo en solitario de horror cósmico con 20 expedientes originales de homenaje.",
-  "start_url": ".",
+  "description": "RPG narrativo offline de horror cósmico con 20 expedientes conectados, progresión y final de metacampaña Archivo Ω.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#100b08",
   "theme_color": "#100b08",
   "icons": [
-    {
-      "src": "assets/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]
 }

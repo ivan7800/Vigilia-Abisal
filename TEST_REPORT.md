@@ -1,37 +1,61 @@
-# TEST REPORT · Vigilia Abisal v2.0.0
+# TEST REPORT · Vigilia Abisal v3.0.0
 
-## Resultado general
+## Resultado
 
-Estado: APTO PARA GITHUB.
+**Motor/estructura: PASS**
 
-## Verificaciones automáticas realizadas
+La prueba visual automatizada con Chromium no pudo ejecutarse porque el entorno de trabajo bloquea por política administrativa la navegación headless tanto a `localhost` como a `file://`. Esta limitación se documenta y no se sustituye por una afirmación falsa de validación visual.
 
-- Total de expedientes: 20.
-- Total de escenas: 100.
-- Total de decisiones: 200.
-- Todas las rutas internas apuntan a una escena válida o a un final válido.
-- `manifest.webmanifest` validado como JSON.
-- `service-worker.js` con caché versionada `vigilia-abisal-v2.0.0-completa`.
-- Sin dependencias externas.
-- Sin llamadas de red externas.
-- Sin `eval`.
-- Sin `document.write`.
-- Contenido narrativo original: no se copian relatos completos ni traducciones de terceros.
+## Pruebas ejecutadas
 
-## Validación de rutas
+### Sintaxis
+- `node --check app.js` → PASS
+- `node --check campaign.js` → PASS
+- `node --check service-worker.js` → PASS
+- `manifest.webmanifest` parseado como JSON → PASS
 
-Sin errores detectados.
+### Integridad narrativa
+- 21 casos en datos: 20 expedientes + Archivo Ω → PASS
+- 128 escenas → PASS
+- 289 decisiones → PASS
+- Destinos `success/fail` inexistentes → 0
+- Endings inexistentes referenciados → 0
+- Textos de outcome duplicados entre expedientes IX–XX → 0
 
-## Pruebas manuales recomendadas
+### Ejecución del motor
+Arnés Node con DOM/localStorage simulado:
 
-- Abrir `index.html` en Chrome/Edge/Firefox.
-- Probar una partida nueva con cada arquetipo.
-- Completar al menos 3 expedientes en móvil.
-- Probar exportación/importación de partida.
-- Publicar en GitHub Pages y comprobar instalación PWA.
+- 289 decisiones ejecutadas forzando éxito → PASS
+- 289 decisiones ejecutadas forzando fallo/pifia → PASS
+- Total: **578 ejecuciones**, 0 excepciones, 0 estados narrativos inválidos.
 
-## Riesgos pendientes
+### Campaña
+- Completar los 20 expedientes → PASS
+- Desbloquear 5/5 convergencias → PASS
+- Archivo Ω bloqueado al inicio → PASS
+- Archivo Ω desbloqueado con requisitos → PASS
+- Final de metacampaña almacenado → PASS
+- Progresión hasta nivel 6 → PASS
+- XP/Insight acumulados → PASS
 
-- Falta prueba física en iPhone/Safari real.
-- Falta prueba física en Android/Chrome real.
-- `localStorage` es suficiente para esta edición; si se añaden campañas masivas, migrar a IndexedDB.
+### Sistemas
+- Dificultad 15 modifica DC base 14 a DC efectiva 15 → PASS
+- Opción de continuidad bloqueada sin flag → PASS
+- La misma opción se desbloquea con flag previo → PASS
+- Resolución por reliquia bloqueada sin objeto → PASS
+- Resolución por reliquia desbloqueada con objeto → PASS
+- Save → JSON → sanitizeSave → estado v4 → PASS
+- 21 resultados conservados tras round-trip → PASS
+
+### DOM estático
+- IDs referenciados desde `app.js`: 46
+- IDs inexistentes en `index.html`: 0
+
+## Pendiente manual antes de declarar 9,5+
+
+- Safari real en iPhone.
+- Chrome/Edge reales con interacción táctil/ratón.
+- Instalación PWA real desde GitHub Pages.
+- Verificación offline física tras instalación.
+- Lighthouse en la URL publicada.
+- Revisión visual a 320, 390, tablet y escritorio en navegadores reales.
