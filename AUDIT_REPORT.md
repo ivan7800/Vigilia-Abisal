@@ -8,7 +8,7 @@ La Edición Definitiva se construye sobre la campaña validada de v3 y prioriza 
 
 ### Juego
 - Talentos por profesión implementados como modificadores situacionales.
-- Cicatrices transformadas en efectos de doble filo.
+- 20 cicatrices transformadas en efectos de doble filo.
 - Nueva Vigilia+ integrada con Archivo Ω.
 - Decisiones de memoria añadidas en NG+.
 - Alucinaciones de baja Cordura añadidas en cinco expedientes.
@@ -22,14 +22,14 @@ La Edición Definitiva se construye sobre la campaña validada de v3 y prioriza 
 - Estados de Cordura usan efectos discretos y respetan `prefers-reduced-motion`.
 
 ### PWA
-- Caché actualizada.
-- Iconos 512x512 añadidos.
-- Recurso maskable añadido.
-- Manifest actualizado.
+- Caché actualizada a v4.
+- Manifest alineado con los recursos realmente presentes.
+- App Shell corregido para no solicitar `icon-512.png` ni `icon-maskable-512.png` inexistentes.
+- Se conservan `icon-192.png`, `icon.svg` y `apple-touch-icon.png`.
+- Esta corrección evita que `cache.addAll(APP_SHELL)` falle durante la instalación por un recurso ausente.
 
 ### Seguridad
-Se mantiene la CSP restrictiva de la aplicación.
-La capa v4 no introduce red, `eval`, HTML remoto, telemetría ni dependencias externas.
+Se mantiene la CSP restrictiva de la aplicación. La capa v4 no introduce red, `eval`, HTML remoto, telemetría ni dependencias externas.
 
 ## Deuda técnica conocida
 
@@ -53,6 +53,6 @@ Antes de etiquetar la experiencia como validada en todos los dispositivos:
 La v4 está preparada para publicación como actualización compatible si:
 1. todos los scripts pasan sintaxis;
 2. todos los recursos del App Shell existen;
-3. manifest parsea;
+3. el manifest parsea;
 4. la campaña base sigue conservando sus rutas;
 5. las pruebas manuales de navegador no descubren regresiones.
