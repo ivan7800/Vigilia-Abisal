@@ -9,17 +9,13 @@ Vigilia Abisal conserva la campaña conectada de la v3 y añade una capa de sist
 - **20 expedientes principales + Archivo Ω**.
 - **128 escenas** y **289 decisiones** en la campaña base.
 - **8 investigadores** con talento profesional contextual propio.
-- **Cicatrices vivas**: cada trauma puede ayudar o perjudicar según el tipo de horror y la tirada.
+- **20 perfiles de cicatriz de doble filo**: cada trauma puede ayudar o perjudicar según el tipo de horror y la tirada.
 - **5 convergencias** con un nuevo **Mapa Ω** de campaña.
 - **Continuidad entre expedientes** mediante flags, reliquias y decisiones especiales.
-- **Nueva Vigilia+** al completar Archivo Ω:
-  - conserva cicatrices;
-  - conserva una reliquia;
-  - reinicia la investigación;
-  - añade ecos de memoria exclusivos a los expedientes.
+- **Nueva Vigilia+** al completar Archivo Ω: conserva cicatrices, conserva una reliquia, reinicia la investigación y añade ecos de memoria exclusivos.
 - **Alucinaciones de baja Cordura** en escenas concretas: la interfaz puede ofrecer acciones que no pertenecen del todo a la realidad.
 - Presentación mejorada de desenlaces.
-- PWA con iconos 192/512 y recurso maskable.
+- PWA con icono PNG 192x192, icono SVG escalable y `apple-touch-icon`.
 - Compatibilidad con partidas anteriores mediante el esquema de guardado existente.
 
 ## Sistema de tiradas
@@ -37,9 +33,7 @@ La Edición Definitiva añade modificadores contextuales:
 +/- cicatriz activa
 ```
 
-La **Presión del expediente** modifica la dificultad efectiva.
-
-Los éxitos críticos y las pifias siguen dependiendo de la combinación de d12 y d6.
+La **Presión del expediente** modifica la dificultad efectiva. Los éxitos críticos y las pifias siguen dependiendo de la combinación de d12 y d6.
 
 ## Talentos profesionales
 
@@ -58,9 +52,7 @@ Los talentos no son bonificaciones planas: solo aparecen cuando la escena y el a
 
 ## Cicatrices vivas
 
-Las cicatrices ya no son únicamente un contador.
-
-Cada expediente puede dejar una secuela con **doble filo**. Ejemplos:
+Las cicatrices ya no son únicamente un contador. Cada expediente puede dejar una secuela con **doble filo**. Ejemplos:
 
 - *Talasofobia lúcida*: mejora Percepción en horror marino y penaliza Temple.
 - *Geometría residual*: mejora Razón ante geometría imposible y penaliza Movimiento.
@@ -70,13 +62,7 @@ La hoja del investigador muestra el nombre y efecto narrativo de cada cicatriz.
 
 ## Mapa Ω
 
-Desde el panel de Convergencias puede abrirse un mapa de campaña que muestra:
-
-- estado de los cinco arcos;
-- expedientes vinculados;
-- progreso necesario;
-- Insight;
-- proximidad al Archivo Ω.
+Desde el panel de Convergencias puede abrirse un mapa de campaña que muestra estado de los cinco arcos, expedientes vinculados, progreso necesario, Insight y proximidad al Archivo Ω.
 
 Las cinco convergencias son:
 
@@ -88,46 +74,23 @@ Las cinco convergencias son:
 
 ## Archivo Ω
 
-Archivo Ω se desbloquea cuando la campaña alcanza los requisitos de metaprogresión.
-
-El desenlace verdadero exige haber completado:
-
-- 20 expedientes;
-- 5 convergencias;
-- Insight suficiente.
+Archivo Ω se desbloquea cuando la campaña alcanza los requisitos de metaprogresión. El desenlace verdadero exige haber completado los 20 expedientes, las 5 convergencias y disponer de Insight suficiente.
 
 La revelación central se mantiene: **el archivo no solo clasifica horrores; también ha estado estudiando al investigador**.
 
 ## Nueva Vigilia+
 
-Tras cerrar Archivo Ω aparece la opción **Comenzar Nueva Vigilia**.
-
-La nueva campaña:
-
-- reinicia expedientes, XP e Insight;
-- conserva las cicatrices;
-- conserva una reliquia;
-- incrementa el contador de Vigilia;
-- introduce decisiones de memoria en los expedientes.
-
-Esos recuerdos pueden ofrecer una ventaja, pero también pueden no coincidir exactamente con la nueva iteración.
+Tras cerrar Archivo Ω aparece la opción **Comenzar Nueva Vigilia**. La nueva campaña reinicia expedientes, XP e Insight; conserva cicatrices y una reliquia; incrementa el contador de Vigilia e introduce decisiones de memoria. Esos recuerdos pueden ofrecer una ventaja, pero también pueden no coincidir exactamente con la nueva iteración.
 
 ## Cordura e interfaz
 
-Con Cordura baja la presentación visual se vuelve menos estable.
-
-En determinados expedientes pueden aparecer **alucinaciones interactivas**. Son deliberadas y forman parte del sistema de horror; se registran para no repetirse indefinidamente.
-
-Se respeta `prefers-reduced-motion`.
+Con Cordura baja la presentación visual se vuelve menos estable. En determinados expedientes pueden aparecer **alucinaciones interactivas**. Son deliberadas y forman parte del sistema de horror; se registran para no repetirse indefinidamente. Se respeta `prefers-reduced-motion`.
 
 ## Privacidad y seguridad
 
 - Sin login.
-- Sin analíticas.
-- Sin telemetría.
-- Sin API remota.
-- Sin CDN.
-- Sin backend.
+- Sin analíticas ni telemetría.
+- Sin API remota, CDN ni backend.
 - `localStorage` para guardados.
 - Importación/exportación JSON saneada.
 - CSP restrictiva.
@@ -135,15 +98,7 @@ Se respeta `prefers-reduced-motion`.
 
 ## Guardados
 
-La Edición Definitiva mantiene compatibilidad con la migración de la v3 y amplía el estado de campaña con:
-
-```text
-vigilia
-memoryShards
-legacyRelic
-```
-
-Las partidas anteriores reciben valores seguros por defecto.
+La Edición Definitiva mantiene compatibilidad con la migración de la v3 y amplía el estado de campaña con datos de Nueva Vigilia, recuerdos y reliquia heredada. Las partidas anteriores reciben valores seguros por defecto.
 
 ## Uso local
 
@@ -153,11 +108,7 @@ Para pruebas completas de PWA y Service Worker:
 python -m http.server 8080
 ```
 
-Después:
-
-```text
-http://localhost:8080
-```
+Después abre `http://localhost:8080`.
 
 ## GitHub Pages
 
@@ -174,35 +125,22 @@ Todas las rutas son relativas al repositorio.
 index.html
 styles.css
 v4.css
-
 campaign-core.js
 campaign-epilogues.js
-campaign-exp-1.js
-campaign-exp-2.js
-campaign-exp-3.js
-campaign-exp-4.js
+campaign-exp-1.js ... campaign-exp-4.js
 campaign-crosslinks.js
 campaign-meta-1.js
 campaign-meta-2.js
-
 app.js
 v3-content.js
-v3-engine-1.js
-v3-engine-2.js
-v3-engine-3.js
-v3-engine-4.js
+v3-engine-1.js ... v3-engine-4.js
 v4-definitive.js
-
 service-worker.js
 manifest.webmanifest
-
 assets/
   icon.svg
   icon-192.png
-  icon-512.png
-  icon-maskable-512.png
   apple-touch-icon.png
-
 README.md
 CHANGELOG.md
 AUDIT_REPORT.md
@@ -213,9 +151,7 @@ LICENSE
 
 ## Arquitectura y compatibilidad
 
-La v4 se ha diseñado como una capa compatible sobre el motor validado de Campaña Ω v3 para evitar una migración destructiva del contenido y de los guardados.
-
-La consolidación futura del motor puede realizarse sin cambiar las reglas de campaña definidas por v4.
+La v4 se ha diseñado como una capa compatible sobre el motor validado de Campaña Ω v3 para evitar una migración destructiva del contenido y de los guardados. La consolidación futura del motor puede realizarse sin cambiar las reglas de campaña definidas por v4.
 
 ## Nota legal
 
