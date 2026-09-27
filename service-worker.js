@@ -1,8 +1,9 @@
-const CACHE_NAME = 'vigilia-abisal-v3.0.1-omega';
+const CACHE_NAME = 'vigilia-abisal-v4.0.0-definitive';
 const APP_SHELL = [
   './',
   './index.html',
   './styles.css',
+  './v4.css',
   './campaign-core.js',
   './campaign-epilogues.js',
   './campaign-exp-1.js',
@@ -18,9 +19,12 @@ const APP_SHELL = [
   './v3-engine-2.js',
   './v3-engine-3.js',
   './v3-engine-4.js',
+  './v4-definitive.js',
   './manifest.webmanifest',
   './assets/icon.svg',
   './assets/icon-192.png',
+  './assets/icon-512.png',
+  './assets/icon-maskable-512.png',
   './assets/apple-touch-icon.png'
 ];
 

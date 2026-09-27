@@ -1,40 +1,84 @@
-# Vigilia Abisal · Campaña Ω v3.0.0
+# Vigilia Abisal · Edición Definitiva v4.0.0
 
-RPG narrativo de horror cósmico en solitario, **offline-first**, sin backend ni dependencias externas y preparado para GitHub Pages.
+RPG narrativo de horror cósmico en solitario, **offline-first**, sin backend, sin CDN, sin telemetría y preparado para GitHub Pages.
 
-## Qué cambia en v3
+## Qué incluye la Edición Definitiva
 
-La v3 deja atrás la estructura lineal de la edición anterior y convierte los expedientes en una campaña conectada:
+Vigilia Abisal conserva la campaña conectada de la v3 y añade una capa de sistemas orientada a rejugabilidad y consecuencias:
 
-- **20 expedientes principales + Archivo Ω** como final de metacampaña.
-- **128 escenas** y **289 decisiones**.
-- Expedientes IX–XX ampliados de 5 a 7 escenas, con rutas secundarias y revelaciones propias.
-- Los textos de resolución repetidos de IX–XX se han sustituido por respuestas específicas de cada caso.
-- **Objetos útiles**: las reliquias obtenidas pueden desbloquear una tercera forma de resolver cada expediente.
-- **Continuidad entre expedientes**: flags y objetos de casos anteriores desbloquean decisiones especiales en casos posteriores.
-- **Dificultad real**: la dificultad del expediente aplica Presión a la DC efectiva de las tiradas.
-- **Progresión**: XP, nivel, Insight, cicatrices y bonificaciones de veteranía.
-- **5 convergencias de campaña** que conectan mar, linaje, sueño, archivo no humano y culto.
-- **Archivo Ω** se desbloquea tras 12 expedientes y 4 convergencias; el final verdadero exige completar los 20, las 5 convergencias y suficiente Insight.
-- Epílogos específicos para los desenlaces principales de cada expediente.
-- Capa visual temática por tipo de horror y panel de progreso de campaña.
-- PWA mejorada con iconos PNG 192/512, `apple-touch-icon`, actualización de caché y shell offline.
+- **20 expedientes principales + Archivo Ω**.
+- **128 escenas** y **289 decisiones** en la campaña base.
+- **8 investigadores** con talento profesional contextual propio.
+- **Cicatrices vivas**: cada trauma puede ayudar o perjudicar según el tipo de horror y la tirada.
+- **5 convergencias** con un nuevo **Mapa Ω** de campaña.
+- **Continuidad entre expedientes** mediante flags, reliquias y decisiones especiales.
+- **Nueva Vigilia+** al completar Archivo Ω:
+  - conserva cicatrices;
+  - conserva una reliquia;
+  - reinicia la investigación;
+  - añade ecos de memoria exclusivos a los expedientes.
+- **Alucinaciones de baja Cordura** en escenas concretas: la interfaz puede ofrecer acciones que no pertenecen del todo a la realidad.
+- Presentación mejorada de desenlaces.
+- PWA con iconos 192/512 y recurso maskable.
+- Compatibilidad con partidas anteriores mediante el esquema de guardado existente.
 
-## Mecánica
+## Sistema de tiradas
 
-Cada tirada usa:
+La base sigue siendo:
 
 ```text
-d12 + d6 + atributo + veteranía + bonificaciones - Presagio
+d12 + d6 + atributo + veteranía + vínculo - Presagio
 ```
 
-La DC efectiva añade la **Presión del expediente** según su dificultad.
+La Edición Definitiva añade modificadores contextuales:
 
-El nivel de veteranía se obtiene con XP al cerrar casos por primera vez. Las repeticiones no permiten farmear XP; mejorar un desenlace puede conceder Insight adicional.
+```text
++ talento profesional
++/- cicatriz activa
+```
 
-## Convergencias
+La **Presión del expediente** modifica la dificultad efectiva.
 
-La campaña detecta relaciones entre expedientes y desbloquea cinco sellos:
+Los éxitos críticos y las pifias siguen dependiendo de la combinación de d12 y d6.
+
+## Talentos profesionales
+
+Cada arquetipo tiene una identidad mecánica adicional:
+
+- **Anticuario/a — Memoria de archivo**
+- **Detective privado — Ojo entrenado**
+- **Médico/a de Miskatonic — Frialdad clínica**
+- **Periodista ocultista — Fuente confidencial**
+- **Soñador/a lúcido — Ancla onírica**
+- **Contrabandista de puerto — Instinto de fuga**
+- **Lingüista de Aklo — Lenguas que no deberían existir**
+- **Geólogo/a polar — Lectura del estrato**
+
+Los talentos no son bonificaciones planas: solo aparecen cuando la escena y el atributo encajan.
+
+## Cicatrices vivas
+
+Las cicatrices ya no son únicamente un contador.
+
+Cada expediente puede dejar una secuela con **doble filo**. Ejemplos:
+
+- *Talasofobia lúcida*: mejora Percepción en horror marino y penaliza Temple.
+- *Geometría residual*: mejora Razón ante geometría imposible y penaliza Movimiento.
+- *Recuerdo futuro*: ayuda a comprender anomalías temporales, pero las hace más difíciles de soportar.
+
+La hoja del investigador muestra el nombre y efecto narrativo de cada cicatriz.
+
+## Mapa Ω
+
+Desde el panel de Convergencias puede abrirse un mapa de campaña que muestra:
+
+- estado de los cinco arcos;
+- expedientes vinculados;
+- progreso necesario;
+- Insight;
+- proximidad al Archivo Ω.
+
+Las cinco convergencias son:
 
 1. La marea que recuerda.
 2. La sangre que insiste.
@@ -42,39 +86,74 @@ La campaña detecta relaciones entre expedientes y desbloquea cinco sellos:
 4. Archivo no humano.
 5. Los nombres bajo la ciudad.
 
-Estas convergencias no son solo decorativas: determinan el acceso y las opciones del Archivo Ω.
+## Archivo Ω
 
-## Privacidad
+Archivo Ω se desbloquea cuando la campaña alcanza los requisitos de metaprogresión.
+
+El desenlace verdadero exige haber completado:
+
+- 20 expedientes;
+- 5 convergencias;
+- Insight suficiente.
+
+La revelación central se mantiene: **el archivo no solo clasifica horrores; también ha estado estudiando al investigador**.
+
+## Nueva Vigilia+
+
+Tras cerrar Archivo Ω aparece la opción **Comenzar Nueva Vigilia**.
+
+La nueva campaña:
+
+- reinicia expedientes, XP e Insight;
+- conserva las cicatrices;
+- conserva una reliquia;
+- incrementa el contador de Vigilia;
+- introduce decisiones de memoria en los expedientes.
+
+Esos recuerdos pueden ofrecer una ventaja, pero también pueden no coincidir exactamente con la nueva iteración.
+
+## Cordura e interfaz
+
+Con Cordura baja la presentación visual se vuelve menos estable.
+
+En determinados expedientes pueden aparecer **alucinaciones interactivas**. Son deliberadas y forman parte del sistema de horror; se registran para no repetirse indefinidamente.
+
+Se respeta `prefers-reduced-motion`.
+
+## Privacidad y seguridad
 
 - Sin login.
-- Sin analíticas ni telemetría.
+- Sin analíticas.
+- Sin telemetría.
 - Sin API remota.
 - Sin CDN.
 - Sin backend.
-- Partidas guardadas en `localStorage`.
-- Exportación/importación JSON saneada.
+- `localStorage` para guardados.
+- Importación/exportación JSON saneada.
 - CSP restrictiva.
+- Recursos servidos desde el propio origen.
 
 ## Guardados
 
-La v3 usa el esquema de guardado **v4** y la clave `vigiliaAbisal.save.v2`.
+La Edición Definitiva mantiene compatibilidad con la migración de la v3 y amplía el estado de campaña con:
 
-Se migran automáticamente partidas antiguas desde:
+```text
+vigilia
+memoryShards
+legacyRelic
+```
 
-- `vigiliaAbisal.save.v1`
-- `investigador404.save.v1`
-
-Los casos cerrados de versiones anteriores reciben XP e Insight retroactivos al migrar.
+Las partidas anteriores reciben valores seguros por defecto.
 
 ## Uso local
 
-La app puede abrirse directamente con `index.html` para jugar. Para probar PWA y Service Worker usa un servidor HTTP local:
+Para pruebas completas de PWA y Service Worker:
 
 ```bash
 python -m http.server 8080
 ```
 
-Después abre:
+Después:
 
 ```text
 http://localhost:8080
@@ -82,24 +161,48 @@ http://localhost:8080
 
 ## GitHub Pages
 
-1. Crea o usa un repositorio.
-2. Sube **el contenido de esta carpeta a la raíz**.
-3. En `Settings > Pages`, selecciona `Deploy from a branch`.
-4. Elige `main` y `/root`.
-5. Publica.
+1. Publica el contenido de la raíz del repositorio.
+2. `Settings > Pages`.
+3. `Deploy from a branch`.
+4. Rama `main`, carpeta `/root`.
 
-Todas las rutas de recursos son relativas y el Service Worker trabaja dentro del scope del repositorio.
+Todas las rutas son relativas al repositorio.
 
-## Estructura
+## Estructura principal
 
 ```text
 index.html
 styles.css
-campaign.js      # contenido, epílogos, expansiones y metacampaña
-app.js           # motor, estado, UI, tiradas, guardado y progresión
+v4.css
+
+campaign-core.js
+campaign-epilogues.js
+campaign-exp-1.js
+campaign-exp-2.js
+campaign-exp-3.js
+campaign-exp-4.js
+campaign-crosslinks.js
+campaign-meta-1.js
+campaign-meta-2.js
+
+app.js
+v3-content.js
+v3-engine-1.js
+v3-engine-2.js
+v3-engine-3.js
+v3-engine-4.js
+v4-definitive.js
+
 service-worker.js
 manifest.webmanifest
+
 assets/
+  icon.svg
+  icon-192.png
+  icon-512.png
+  icon-maskable-512.png
+  apple-touch-icon.png
+
 README.md
 CHANGELOG.md
 AUDIT_REPORT.md
@@ -107,6 +210,12 @@ TEST_REPORT.md
 VERSION.txt
 LICENSE
 ```
+
+## Arquitectura y compatibilidad
+
+La v4 se ha diseñado como una capa compatible sobre el motor validado de Campaña Ω v3 para evitar una migración destructiva del contenido y de los guardados.
+
+La consolidación futura del motor puede realizarse sin cambiar las reglas de campaña definidas por v4.
 
 ## Nota legal
 
