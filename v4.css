@@ -1,0 +1,278 @@
+/* Vigilia Abisal · Edición Definitiva v4.0.0
+   Capa visual añadida sobre styles.css sin dependencias externas. */
+
+#modalText {
+  white-space: pre-line;
+}
+
+.v4-result-modal .modal-card {
+  border-color: rgba(216, 166, 74, .48);
+  background:
+    linear-gradient(180deg, rgba(216,166,74,.05), transparent 38%),
+    var(--panel-strong);
+}
+
+.v4-result-modal #modalTitle {
+  padding-bottom: .7rem;
+  margin-bottom: .85rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.v4-new-vigilia {
+  margin-top: 1rem;
+}
+
+.v4-trait-block strong {
+  display: block;
+  color: var(--accent-2);
+  margin-bottom: .3rem;
+}
+
+.v4-scar-list {
+  display: grid;
+  gap: .55rem;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.v4-scar-list li {
+  display: grid;
+  gap: .2rem;
+  padding: .65rem .7rem;
+  border: 1px solid rgba(196,81,69,.32);
+  border-radius: 12px;
+  background: rgba(196,81,69,.06);
+}
+
+.v4-scar-list strong {
+  color: #f0c2bb;
+  font-size: .9rem;
+}
+
+.v4-scar-list span {
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.4;
+}
+
+.v4-map-button {
+  width: 100%;
+  margin-top: .6rem;
+}
+
+.v4-vigilia-text {
+  margin: .7rem 0 0;
+  color: var(--accent);
+  letter-spacing: .04em;
+}
+
+.v4-map-modal {
+  width: min(1100px, calc(100% - 1.4rem));
+  max-height: 92vh;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+.v4-map-modal::backdrop {
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(8px);
+}
+
+.v4-map-card {
+  overflow: auto;
+  max-height: 92vh;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(87,177,157,.12), transparent 30rem),
+    var(--panel-strong);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.5vw, 1.8rem);
+}
+
+.v4-map-head {
+  position: sticky;
+  top: -1px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: .8rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(180deg, var(--panel-strong) 75%, transparent);
+}
+
+.v4-map-head h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+}
+
+.v4-map-body {
+  display: grid;
+  gap: 1rem;
+}
+
+.v4-omega-node {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: .35rem;
+  width: min(100%, 520px);
+  margin: 0 auto .4rem;
+  padding: 1.2rem;
+  border: 1px solid rgba(141,199,176,.3);
+  border-radius: 20px;
+  background: rgba(141,199,176,.055);
+}
+
+.v4-omega-node strong {
+  display: grid;
+  place-items: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 1px solid rgba(141,199,176,.42);
+  font-size: 2.4rem;
+  color: var(--accent-2);
+  box-shadow: 0 0 45px rgba(141,199,176,.12);
+}
+
+.v4-omega-node.awake strong {
+  box-shadow: 0 0 60px rgba(141,199,176,.26);
+}
+
+.v4-omega-node span {
+  color: var(--muted);
+}
+
+.v4-arc-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+.v4-arc {
+  min-width: 0;
+  padding: .9rem;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.025);
+}
+
+.v4-arc.unlocked {
+  border-color: rgba(141,199,176,.44);
+  background: rgba(141,199,176,.055);
+}
+
+.v4-arc h3 {
+  margin: 0 0 .25rem;
+  font-size: .98rem;
+  line-height: 1.2;
+}
+
+.v4-arc > p {
+  margin: 0 0 .75rem;
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.v4-arc ul {
+  display: grid;
+  gap: .38rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.v4-arc li {
+  color: #9c8d76;
+  font-size: .78rem;
+  line-height: 1.32;
+}
+
+.v4-arc li.done {
+  color: #d9eee7;
+}
+
+.v4-hallucination {
+  border-style: dashed;
+  border-color: rgba(196,81,69,.52);
+  background:
+    repeating-linear-gradient(135deg, rgba(196,81,69,.055) 0 8px, transparent 8px 16px);
+}
+
+.v4-hallucination strong::before {
+  content: "¿ ";
+  color: var(--danger);
+}
+
+body[data-sanity="unstable"] .story-card::after,
+body[data-sanity="fractured"] .story-card::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(91deg, transparent 0 49%, rgba(255,255,255,.018) 50%, transparent 51%),
+    radial-gradient(circle at 20% 70%, rgba(196,81,69,.05), transparent 30%);
+  mix-blend-mode: screen;
+}
+
+body[data-sanity="fractured"] #sceneTitle {
+  text-shadow: 1px 0 rgba(196,81,69,.3), -1px 0 rgba(141,199,176,.2);
+}
+
+body[data-sanity="fractured"] .scene-art {
+  transform: rotate(-1deg);
+}
+
+html[data-vigilia-version="4.0.0"] .case-card.done {
+  box-shadow: inset 0 0 0 1px rgba(148,201,115,.08);
+}
+
+@media (max-width: 1000px) {
+  .v4-arc-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .v4-map-modal {
+    width: calc(100% - .5rem);
+  }
+
+  .v4-map-card {
+    border-radius: 16px;
+    padding: .8rem;
+  }
+
+  .v4-map-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .v4-map-head .ghost {
+    width: 100%;
+  }
+
+  .v4-arc-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .v4-omega-node strong {
+    width: 62px;
+    height: 62px;
+    font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-sanity="fractured"] .scene-art {
+    transform: none;
+  }
+}
