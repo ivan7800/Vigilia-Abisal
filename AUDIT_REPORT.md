@@ -1,58 +1,95 @@
-# AUDIT REPORT · Vigilia Abisal v4.0.0
+# AUDIT REPORT · Vigilia Abisal Director's Cut v4.1.0
 
 ## Diagnóstico
 
-La Edición Definitiva se construye sobre la campaña validada de v3 y prioriza profundidad sistémica y rejugabilidad sin sustituir el grafo narrativo probado.
+Director's Cut no intenta hacer Vigilia Abisal más grande. Su objetivo es hacer la campaña más memorable: que decisiones anteriores reaparezcan horas después, que el archivo se comporte como una entidad narrativa y que la presentación tenga más textura sin sacrificar la PWA ligera.
 
 ## Cambios ejecutados
 
-### Juego
-- Talentos por profesión implementados como modificadores situacionales.
-- 20 cicatrices transformadas en efectos de doble filo.
-- Nueva Vigilia+ integrada con Archivo Ω.
-- Decisiones de memoria añadidas en NG+.
-- Alucinaciones de baja Cordura añadidas en cinco expedientes.
-- Mapa Ω añadido a la interfaz.
+### Consecuencias a largo plazo
+Se añadieron **15 enlaces retardados** entre expedientes. El sistema consulta el desenlace almacenado del caso de origen cuando se abre el caso destino y aplica una consecuencia única.
 
-### UX
-- Resultado final conserva saltos de línea mediante `white-space: pre-line`.
-- Cicatrices y talento visibles en la hoja.
-- Número de Vigilia visible.
-- Mapa responsive y cerrable por acción explícita o clic en backdrop.
-- Estados de Cordura usan efectos discretos y respetan `prefers-reduced-motion`.
+Características:
+- diferencia Verdad, Supervivencia y cierre traumático;
+- puede afectar pistas, Insight, Cordura o Presagio;
+- se registra en diario;
+- se marca con flag persistente para no repetirse;
+- si dos ecos convergen en un mismo caso, los efectos se combinan con límites seguros;
+- no modifica los destinos del grafo narrativo base.
 
-### PWA
-- Caché actualizada a v4.
-- Manifest alineado con los recursos realmente presentes.
-- App Shell corregido para no solicitar `icon-512.png` ni `icon-maskable-512.png` inexistentes.
-- Se conservan `icon-192.png`, `icon.svg` y `apple-touch-icon.png`.
-- Esta corrección evita que `cache.addAll(APP_SHELL)` falle durante la instalación por un recurso ausente.
+### Momentos memorables
+Se añadieron **7 documentos imposibles** que aparecen como expedientes anómalos en hitos concretos:
+- Expediente 0.
+- Primer desplazamiento del índice.
+- Negativo 7-B.
+- Expediente XXI · El investigador.
+- Puerta sin dirección.
+- Índice completo.
+- Copia II en Nueva Vigilia+.
 
-### Seguridad
-Se mantiene la CSP restrictiva de la aplicación. La capa v4 no introduce red, `eval`, HTML remoto, telemetría ni dependencias externas.
+Estos acontecimientos usan el nombre/profesión del investigador cuando corresponde y quedan incorporados al diario y al estado de campaña.
 
-## Deuda técnica conocida
+### Dirección visual
+- tira de identificación de evidencia por escena;
+- código `VA-xx/xx`;
+- sello de copia de Vigilia;
+- textura documental muy ligera;
+- tarjetas anómalas diferenciadas del listado normal;
+- modal de archivo reservado;
+- transición breve al cambiar de escena;
+- `prefers-reduced-motion` respetado.
 
-Para minimizar riesgo sobre un motor con cientos de rutas ya probadas, v4 mantiene la arquitectura de capas v2/v3 y añade `v4-definitive.js`.
+### Audio
+La v4.1 añade señales cortas generadas con Web Audio según el tema del expediente. No existen descargas, pistas musicales, APIs ni recursos de audio externos. Si el usuario no activa Ambiente, la capa no genera sonido.
 
-Esto es deliberado para esta release. Una futura consolidación puede unificar los motores en módulos sin cambiar la semántica de campaña.
+## Compatibilidad
 
-## QA requerido en navegador real
+Director's Cut conserva:
+- 20 expedientes + Archivo Ω;
+- 128 escenas y 289 decisiones base;
+- motor de tiradas v4;
+- talentos profesionales;
+- cicatrices vivas;
+- Mapa Ω;
+- Nueva Vigilia+;
+- ecos de memoria;
+- alucinaciones;
+- guardados existentes.
 
-Antes de etiquetar la experiencia como validada en todos los dispositivos:
-- Safari real en iPhone.
-- Chrome/Edge real.
-- Interacción táctil.
-- Instalación PWA.
-- Modo offline tras instalación.
-- Lighthouse.
-- 320 px, 390 px, tablet y escritorio.
+No cambia el esquema de guardado. Los estados v4.1 se almacenan en `player.flags`, que ya forma parte del saneado y la persistencia existente.
 
-## Criterio de release
+## Seguridad
 
-La v4 está preparada para publicación como actualización compatible si:
-1. todos los scripts pasan sintaxis;
-2. todos los recursos del App Shell existen;
-3. el manifest parsea;
-4. la campaña base sigue conservando sus rutas;
-5. las pruebas manuales de navegador no descubren regresiones.
+- CSP restrictiva sin cambios permisivos.
+- sin CDN.
+- sin telemetría.
+- sin backend.
+- sin `eval`.
+- sin HTML remoto.
+- documentos renderizados mediante DOM/texto local.
+- audio generado localmente mediante Web Audio.
+
+## PWA
+
+- caché nueva: `vigilia-abisal-v4.1.0-directors-cut`.
+- `v4.1-directors-cut.js` y `v4.1-directors-cut.css` forman parte del App Shell.
+- rutas relativas compatibles con GitHub Pages.
+- se mantienen únicamente iconos realmente presentes en el repositorio.
+
+## Validación realizada
+
+- `node --check v4.1-directors-cut.js` → PASS.
+- 15 consecuencias contabilizadas → PASS.
+- 7 momentos especiales contabilizados → PASS.
+- arnés Node de consecuencia Carter → Whisperer → PASS en flag, efecto, diario y modal.
+- campaña base mantiene su validación previa.
+
+## Riesgos restantes
+
+La deuda técnica principal sigue siendo la arquitectura por capas v2/v3/v4/v4.1. Para esta release es una decisión conservadora: evita reescribir cientos de rutas ya probadas. A medio plazo puede consolidarse en módulos.
+
+La validación física de Safari/iPhone, instalación PWA, modo offline, Lighthouse y campaña completa de larga duración sigue pendiente y debe considerarse QA de release, no funcionalidad faltante.
+
+## Criterio
+
+La v4.1 mejora la experiencia sin introducir cambios destructivos en el núcleo. La recomendación es publicar después de comprobar la rama en navegador real y, si no aparecen regresiones, mantener esta versión como cierre de contenido antes de cualquier refactor técnico mayor.
