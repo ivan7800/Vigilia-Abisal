@@ -13,7 +13,6 @@
 - Alucinaciones interactivas con Cordura muy baja en escenas seleccionadas.
 - Indicador de número de Vigilia.
 - Presentación mejorada de desenlaces.
-- Iconos PWA 512x512 y maskable.
 
 ### Cambiado
 - La bonificación genérica de cicatrices se sustituye por modificadores contextuales.
@@ -21,6 +20,13 @@
 - Service Worker actualizado a caché `v4.0.0-definitive`.
 - Manifest actualizado.
 - Documentación alineada con la estructura real del repositorio.
+- El App Shell solo precarga recursos que existen realmente en el repositorio, evitando que la instalación del Service Worker falle por iconos inexistentes.
+
+### PWA
+- Icono PNG 192x192.
+- Icono SVG escalable declarado como `any maskable`.
+- `apple-touch-icon`.
+- Rutas relativas compatibles con GitHub Pages.
 
 ### Conservado
 - 20 expedientes + Archivo Ω.
