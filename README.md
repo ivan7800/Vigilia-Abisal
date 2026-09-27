@@ -1,22 +1,52 @@
-# Vigilia Abisal · Edición Definitiva v4.0.0
+# Vigilia Abisal · Director's Cut v4.1.0
 
 RPG narrativo de horror cósmico en solitario, **offline-first**, sin backend, sin CDN, sin telemetría y preparado para GitHub Pages.
 
-## Qué incluye la Edición Definitiva
+## Qué aporta Director's Cut
 
-Vigilia Abisal conserva la campaña conectada de la v3 y añade una capa de sistemas orientada a rejugabilidad y consecuencias:
+La v4.1 mantiene intacta la campaña de la Edición Definitiva y añade profundidad donde más se notaba: consecuencias a largo plazo, acontecimientos memorables y una puesta en escena más física.
 
 - **20 expedientes principales + Archivo Ω**.
 - **128 escenas** y **289 decisiones** en la campaña base.
 - **8 investigadores** con talento profesional contextual propio.
-- **20 perfiles de cicatriz de doble filo**: cada trauma puede ayudar o perjudicar según el tipo de horror y la tirada.
-- **5 convergencias** con un nuevo **Mapa Ω** de campaña.
-- **Continuidad entre expedientes** mediante flags, reliquias y decisiones especiales.
-- **Nueva Vigilia+** al completar Archivo Ω: conserva cicatrices, conserva una reliquia, reinicia la investigación y añade ecos de memoria exclusivos.
-- **Alucinaciones de baja Cordura** en escenas concretas: la interfaz puede ofrecer acciones que no pertenecen del todo a la realidad.
-- Presentación mejorada de desenlaces.
-- PWA con icono PNG 192x192, icono SVG escalable y `apple-touch-icon`.
-- Compatibilidad con partidas anteriores mediante el esquema de guardado existente.
+- **20 perfiles de cicatriz de doble filo**.
+- **15 consecuencias retardadas**: el desenlace de un expediente anterior puede volver horas después y cambiar el estado de otro caso.
+- **7 documentos imposibles** ligados al progreso de campaña y a Nueva Vigilia+.
+- **5 convergencias** con Mapa Ω.
+- Continuidad entre expedientes mediante flags, reliquias, crosslinks y ahora también efectos retardados.
+- **Nueva Vigilia+** con cicatrices, reliquia heredada y ecos de memoria.
+- Alucinaciones de baja Cordura.
+- Capa visual de expediente: códigos de evidencia, sellos, copias de trabajo y documentos no indexados.
+- Señales sonoras procedurales por tema usando Web Audio, sin archivos externos.
+- PWA y funcionamiento offline conservados.
+
+## Consecuencias retardadas
+
+Director's Cut añade quince enlaces de largo alcance. Se activan solo si el expediente de origen se cerró antes que el expediente destino y el efecto depende del tipo de desenlace conseguido.
+
+Ejemplos:
+
+- Carter puede alterar la lectura de las señales de *El que susurra en la oscuridad*.
+- West puede convertir una parte de Ward en una continuación química de su investigación.
+- Innsmouth puede reaparecer entre los modelos de Pickman.
+- Kadath puede cambiar la forma de interpretar la música de Zann.
+- Pickman puede anticipar la arquitectura orgánica de *La casa evitada*.
+
+Una consecuencia puede conceder pistas o Insight, aumentar Presagio o erosionar Cordura. Los efectos combinados están limitados para no romper el equilibrio del motor.
+
+## Documentos imposibles
+
+El listado de expedientes puede mostrar, en momentos concretos, elementos que no pertenecen a la campaña normal. Son acontecimientos únicos y persistentes:
+
+1. **Expediente 0 · el investigador** tras los primeros casos.
+2. **El índice se ha movido** al detectar la primera convergencia.
+3. **Negativo 7-B** después de siete expedientes.
+4. **Expediente XXI · El investigador** a mitad de campaña.
+5. **Una puerta sin dirección** cuando Archivo Ω empieza a ser accesible.
+6. **El índice completo** al reunir los veinte expedientes y cinco convergencias.
+7. **Copia II** en Nueva Vigilia+.
+
+No son simples mensajes: quedan registrados, pueden afectar Cordura/Insight/Presagio y forman parte de la ficción del Archivo Ω.
 
 ## Sistema de tiradas
 
@@ -26,18 +56,16 @@ La base sigue siendo:
 d12 + d6 + atributo + veteranía + vínculo - Presagio
 ```
 
-La Edición Definitiva añade modificadores contextuales:
+La Edición Definitiva añade:
 
 ```text
 + talento profesional
 +/- cicatriz activa
 ```
 
-La **Presión del expediente** modifica la dificultad efectiva. Los éxitos críticos y las pifias siguen dependiendo de la combinación de d12 y d6.
+Director's Cut no cambia la fórmula central. Las consecuencias retardadas modifican el estado antes de una investigación, no la matemática base de cada tirada.
 
 ## Talentos profesionales
-
-Cada arquetipo tiene una identidad mecánica adicional:
 
 - **Anticuario/a — Memoria de archivo**
 - **Detective privado — Ojo entrenado**
@@ -48,23 +76,13 @@ Cada arquetipo tiene una identidad mecánica adicional:
 - **Lingüista de Aklo — Lenguas que no deberían existir**
 - **Geólogo/a polar — Lectura del estrato**
 
-Los talentos no son bonificaciones planas: solo aparecen cuando la escena y el atributo encajan.
-
 ## Cicatrices vivas
 
-Las cicatrices ya no son únicamente un contador. Cada expediente puede dejar una secuela con **doble filo**. Ejemplos:
+Cada trauma tiene doble filo. Puede conceder una ventaja contextual y una penalización en otro atributo del mismo tipo de horror. La hoja muestra su nombre y efecto narrativo.
 
-- *Talasofobia lúcida*: mejora Percepción en horror marino y penaliza Temple.
-- *Geometría residual*: mejora Razón ante geometría imposible y penaliza Movimiento.
-- *Recuerdo futuro*: ayuda a comprender anomalías temporales, pero las hace más difíciles de soportar.
+## Mapa Ω y Archivo Ω
 
-La hoja del investigador muestra el nombre y efecto narrativo de cada cicatriz.
-
-## Mapa Ω
-
-Desde el panel de Convergencias puede abrirse un mapa de campaña que muestra estado de los cinco arcos, expedientes vinculados, progreso necesario, Insight y proximidad al Archivo Ω.
-
-Las cinco convergencias son:
+Las cinco convergencias siguen siendo:
 
 1. La marea que recuerda.
 2. La sangre que insiste.
@@ -72,19 +90,26 @@ Las cinco convergencias son:
 4. Archivo no humano.
 5. Los nombres bajo la ciudad.
 
-## Archivo Ω
+Archivo Ω se desbloquea mediante la metaprogresión de la campaña. El desenlace verdadero exige los 20 expedientes, las 5 convergencias e Insight suficiente.
 
-Archivo Ω se desbloquea cuando la campaña alcanza los requisitos de metaprogresión. El desenlace verdadero exige haber completado los 20 expedientes, las 5 convergencias y disponer de Insight suficiente.
-
-La revelación central se mantiene: **el archivo no solo clasifica horrores; también ha estado estudiando al investigador**.
+La revelación central permanece: **el archivo no solo clasifica horrores; también ha estado estudiando al investigador**.
 
 ## Nueva Vigilia+
 
-Tras cerrar Archivo Ω aparece la opción **Comenzar Nueva Vigilia**. La nueva campaña reinicia expedientes, XP e Insight; conserva cicatrices y una reliquia; incrementa el contador de Vigilia e introduce decisiones de memoria. Esos recuerdos pueden ofrecer una ventaja, pero también pueden no coincidir exactamente con la nueva iteración.
+Tras cerrar Archivo Ω puede iniciarse una nueva iteración. Se reinician expedientes, XP e Insight; se conservan cicatrices y una reliquia, aumenta el número de Vigilia y aparecen ecos de memoria. Director's Cut añade además una **Copia II** imposible del archivo después del primer caso de una nueva Vigilia.
 
-## Cordura e interfaz
+## Dirección audiovisual
 
-Con Cordura baja la presentación visual se vuelve menos estable. En determinados expedientes pueden aparecer **alucinaciones interactivas**. Son deliberadas y forman parte del sistema de horror; se registran para no repetirse indefinidamente. Se respeta `prefers-reduced-motion`.
+La v4.1 usa una capa ligera y completamente local:
+
+- código de evidencia por escena;
+- textura documental y sellos de archivo;
+- documentos no indexados integrados en el listado de casos;
+- transiciones muy breves de escena;
+- señal sonora procedural distinta según mar, sueño, carne, hielo, señal, geometría, tiempo, etc.;
+- compatibilidad con `prefers-reduced-motion`.
+
+No se descargan imágenes, fuentes, audio ni scripts externos.
 
 ## Privacidad y seguridad
 
@@ -98,11 +123,11 @@ Con Cordura baja la presentación visual se vuelve menos estable. En determinado
 
 ## Guardados
 
-La Edición Definitiva mantiene compatibilidad con la migración de la v3 y amplía el estado de campaña con datos de Nueva Vigilia, recuerdos y reliquia heredada. Las partidas anteriores reciben valores seguros por defecto.
+Director's Cut **no cambia el esquema de guardado**. Los nuevos acontecimientos y consecuencias usan flags saneados dentro del estado existente, por lo que las partidas de v4 siguen siendo compatibles.
 
 ## Uso local
 
-Para pruebas completas de PWA y Service Worker:
+Para probar PWA y Service Worker:
 
 ```bash
 python -m http.server 8080
@@ -117,14 +142,13 @@ Después abre `http://localhost:8080`.
 3. `Deploy from a branch`.
 4. Rama `main`, carpeta `/root`.
 
-Todas las rutas son relativas al repositorio.
-
 ## Estructura principal
 
 ```text
 index.html
 styles.css
 v4.css
+v4.1-directors-cut.css
 campaign-core.js
 campaign-epilogues.js
 campaign-exp-1.js ... campaign-exp-4.js
@@ -135,6 +159,7 @@ app.js
 v3-content.js
 v3-engine-1.js ... v3-engine-4.js
 v4-definitive.js
+v4.1-directors-cut.js
 service-worker.js
 manifest.webmanifest
 assets/
@@ -151,7 +176,7 @@ LICENSE
 
 ## Arquitectura y compatibilidad
 
-La v4 se ha diseñado como una capa compatible sobre el motor validado de Campaña Ω v3 para evitar una migración destructiva del contenido y de los guardados. La consolidación futura del motor puede realizarse sin cambiar las reglas de campaña definidas por v4.
+La v4.1 sigue el enfoque no destructivo de la v4: se carga después del motor validado y envuelve únicamente puntos de extensión concretos (`renderStage`, `renderCases` y `showModal`). Esto mantiene la semántica de los 20 expedientes y facilita retirar la capa sin alterar el contenido base.
 
 ## Nota legal
 
