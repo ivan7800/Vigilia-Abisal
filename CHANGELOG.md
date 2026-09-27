@@ -1,5 +1,42 @@
 # CHANGELOG
 
+## 4.1.0 · Director's Cut
+
+### Añadido
+- **15 consecuencias retardadas** entre expedientes: el desenlace de un caso anterior puede modificar pistas, Insight, Cordura o Presagio al abrir un caso posterior.
+- Las consecuencias distinguen entre `Verdad peligrosa`, `Supervivencia` y cierres traumáticos; no son bonificaciones genéricas.
+- **7 documentos imposibles** ligados al progreso de campaña: Expediente 0, primer cruce, negativo 7-B, Expediente XXI, puerta sin dirección, índice completo y copia de Nueva Vigilia.
+- Códigos de evidencia por escena (`VA-xx/xx`) y tratamiento visual de expediente de trabajo.
+- Señales sonoras procedurales distintas por tema al entrar en una escena o descubrir un documento; no se añaden dependencias ni archivos de audio.
+- Nueva presentación documental para consecuencias y anomalías.
+
+### Enlaces de consecuencias principales
+- Carter → Whisperer.
+- West → Ward.
+- Cthulhu → Dagon.
+- El Color → Montañas.
+- Dunwich → La tumba.
+- Innsmouth → Pickman.
+- Montañas → Ciudad sin nombre.
+- Kadath → Zann.
+- Dagon → El Festival.
+- La tumba → La sombra de otro tiempo.
+- Nyarlathotep → Casa de la bruja.
+- Ciudad sin nombre → El Festival.
+- Zann → Whisperer.
+- Pickman → La casa evitada.
+- La casa evitada → Ward.
+
+### Cambiado
+- Hero, metadatos y versión pasan a **Director's Cut v4.1.0**.
+- Service Worker usa caché `vigilia-abisal-v4.1.0-directors-cut` e incluye la capa JS/CSS nueva.
+- La interfaz refuerza la estética de archivo físico sin sustituir el diseño v4.
+
+### Compatibilidad
+- No se modifica el esquema de guardado.
+- Los estados nuevos se almacenan como flags saneados del investigador.
+- Se mantienen los 20 expedientes, Archivo Ω, talentos, cicatrices, Mapa Ω, Nueva Vigilia+ y todas las rutas v4.
+
 ## 4.0.0 · Edición Definitiva
 
 ### Añadido
